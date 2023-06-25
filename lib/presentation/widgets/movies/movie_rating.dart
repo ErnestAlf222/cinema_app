@@ -13,6 +13,7 @@ class MovieRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textStyles = Theme.of(context).textTheme;
 
 
     return SizedBox(
@@ -24,7 +25,7 @@ class MovieRating extends StatelessWidget {
           const SizedBox(width: 8),
           const SizedBox(width: 3),
           Text(HumanFormats.number(voteAverage, 1),
-              style: const TextStyle(fontSize: 17)
+              style: textStyles.bodyMedium
                   ?.copyWith(color: Colors.yellow.shade800)),
           
         ],
