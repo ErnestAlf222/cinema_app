@@ -165,12 +165,16 @@ class _TitleAndOverview extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 22),
                 Text( movie.title, style: textStyles.titleLarge ),
-                Text( movie.overview ),
+                const SizedBox(height: 10),
+
+                MovieRating(voteAverage: movie.voteAverage ),
+                const SizedBox(height: 22),
+                Text( movie.overview, style: const TextStyle(fontSize: 15), ),
 
                 const SizedBox(height: 10 ),
                 
-                MovieRating(voteAverage: movie.voteAverage ),
 
                 Row(
                   children: [
@@ -328,3 +332,4 @@ class _CustomGradient extends StatelessWidget {
     );
   }
 }
+

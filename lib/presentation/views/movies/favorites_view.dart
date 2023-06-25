@@ -48,22 +48,21 @@ class FavoritesViewState extends ConsumerState<FavoritesView> with AutomaticKeep
 
 
     if ( favoriteMovies.isEmpty ) {
+      final colors = Theme.of(context).colorScheme;
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-         children: [
-
-            const Icon(Icons.video_camera_back_sharp, size: 250, color: Color(0xffB7FF63),),
-            const Text('Ohh no!!', style: TextStyle( fontSize: 30, color: Color(0xffB7FF63)),),
-            const SizedBox(height: 20),
-
-            const Text('No tienes películas favoritas', style: TextStyle( fontSize: 20, color:  Color(0xffB7FF63)),),
+          children: [
+            Icon( Icons.favorite_outline_sharp, size: 60, color: colors.primary ),
+            Text('Ohhh no!!', style: TextStyle( fontSize: 30, color: colors.primary)),
+            const Text('No tienes películas favoritas', style: TextStyle( fontSize: 20 )),
 
             const SizedBox(height: 20),
-            FilledButton.tonal(onPressed: () => context.go('/home/0'), 
-              child: const Text('Empieza a buscar'))
-
+            FilledButton.tonal(
+              onPressed: () => context.go('/home/0'), 
+              child: const Text('Empieza a buscar')
+            )
           ],
         ),
       );
