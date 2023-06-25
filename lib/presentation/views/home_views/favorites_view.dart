@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cinemapedia/presentation/providers/providers.dart';
+import 'package:go_router/go_router.dart';
 
 class FavoritesView extends ConsumerStatefulWidget {
   const FavoritesView({super.key});
@@ -43,6 +44,29 @@ class FavoritesViewState extends ConsumerState<FavoritesView> {
   Widget build(BuildContext context) {
     
     final  favoriteMovies = ref.watch(favoriteMoviesProvider).values.toList();
+
+    if (favoriteMovies.isEmpty) {
+      final colors = Theme.of(context).colorScheme;
+
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+            Image.asset('assets/1.png', width: 400),
+            const Text('Ohh no!!', style: TextStyle( fontSize: 30, color: Color(0xffB7FF63)),),
+            const Text('No tienes películas favoritas', style: TextStyle( fontSize: 20, color: Colors.black45),),
+
+            const SizedBox(height: 20),
+            FilledButton.tonal(onPressed: () => context.go('/home/0'), 
+              child: const Text('Empieza a buscar'))
+
+          ],
+        ),
+      );
+      
+    }
 
     
     return Scaffold(
